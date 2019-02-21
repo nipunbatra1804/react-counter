@@ -3,15 +3,10 @@ import React, { Component } from "react";
 export class Counter extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      id: props.id,
-      value: props.value,
-      handler: props.handleClickDelete
-    };
   }
 
-  getCounterStyleClass = () => {
-    return this.state.value > 0 ? "primary" : "badge badge-warning";
+  getCounterStyleClass = value => {
+    return value > 0 ? "primary" : "badge badge-warning";
   };
   render() {
     const style = { width: "50px" };
@@ -19,27 +14,29 @@ export class Counter extends Component {
       <React.Fragment>
         <h2>
           <span
-            className={`badge badge-${this.getCounterStyleClass()}`}
+            className={`badge badge-${this.getCounterStyleClass(
+              this.props.value
+            )}`}
             style={style}
           >
-            {this.state.value}{" "}
+            {this.props.value}{" "}
           </span>{" "}
           <button
-            onClick={this.handleClickIncrement}
+            onClick={this.props.handleClickIncrement}
             type="button"
             className="btn btn-success"
           >
             +
           </button>
           <button
-            onClick={this.handleClickDecrement}
+            onClick={this.props.handleClickDecrement}
             type="button"
             className="btn btn-danger"
           >
             -
           </button>
           <button
-            onClick={this.state.handler}
+            onClick={this.props.handleClickDelete}
             type="button"
             className="btn btn-outline-danger"
           >
