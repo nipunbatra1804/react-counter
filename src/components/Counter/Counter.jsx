@@ -8,7 +8,14 @@ export class Counter extends Component {
     return (
       <React.Fragment>
         <h2>
-          <span className="badge badge-primary" style={style}>
+          <span
+            className={
+              this.state.value > 0
+                ? "badge badge-primary"
+                : "badge badge-warning"
+            }
+            style={style}
+          >
             {this.state.value}{" "}
           </span>{" "}
           <button
