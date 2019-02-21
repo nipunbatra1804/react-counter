@@ -3,7 +3,11 @@ import React, { Component } from "react";
 export class Counter extends Component {
   constructor(props) {
     super(props);
-    this.state = { id: props.id, value: props.value };
+    this.state = {
+      id: props.id,
+      value: props.value,
+      handler: props.handleClickDelete
+    };
   }
 
   getCounterStyleClass = () => {
@@ -33,6 +37,13 @@ export class Counter extends Component {
             className="btn btn-danger"
           >
             -
+          </button>
+          <button
+            onClick={this.state.handler}
+            type="button"
+            className="btn btn-outline-danger"
+          >
+            DEL
           </button>
         </h2>
       </React.Fragment>
