@@ -1,19 +1,21 @@
 import React, { Component } from "react";
 
 export class Counter extends Component {
-  state = { id: 1, value: 0 };
+  constructor(props) {
+    super(props);
+    this.state = { id: props.id, value: props.value };
+  }
 
+  getCounterStyleClass = () => {
+    return this.state.value > 0 ? "primary" : "badge badge-warning";
+  };
   render() {
     const style = { width: "50px" };
     return (
       <React.Fragment>
         <h2>
           <span
-            className={
-              this.state.value > 0
-                ? "badge badge-primary"
-                : "badge badge-warning"
-            }
+            className={`badge badge-${this.getCounterStyleClass()}`}
             style={style}
           >
             {this.state.value}{" "}
